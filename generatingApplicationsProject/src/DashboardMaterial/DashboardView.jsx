@@ -39,7 +39,7 @@ function DashboardView() {
             <div className="charts-container">
               <div className="chart-box">
                 <h3>Total Applications</h3>
-                <ResponsiveContainer width="50%" height={250}>
+                <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={applicationsData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
@@ -54,7 +54,7 @@ function DashboardView() {
 
               <div className="chart-box">
                 <h3>Pending Applications</h3>
-                <ResponsiveContainer width="50%" height={250}>
+                <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={pendingApplicationsData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
