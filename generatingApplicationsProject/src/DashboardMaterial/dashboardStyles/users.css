@@ -1,11 +1,10 @@
-.applications-container {
+.users-container {
     max-width: 800px;
     margin: 20px auto;
     font-family: Arial, sans-serif;
   }
   
-  .applications-title {
-    padding-top: 5rem;
+  .users-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -27,7 +26,7 @@
     outline: none;
   }
   
-  .applications-table {
+  .users-table {
     width: 100%;
     border-collapse: collapse;
     background: white;
@@ -35,15 +34,25 @@
     overflow: hidden;
   }
   
-  .applications-table th,
-  .applications-table td {
+  .users-table th,
+  .users-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
-  .applications-table th {
+  .users-table th {
     background: #f9f9f9;
+    font-weight: bold;
+  }
+  
+  .status-active {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .status-inactive {
+    color: red;
     font-weight: bold;
   }
   

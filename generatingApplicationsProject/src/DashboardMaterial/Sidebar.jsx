@@ -3,6 +3,7 @@ import { FaChartBar, FaUser, FaCog, FaSignOutAlt, FaClipboardList } from "react-
 import { MdAnalytics } from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
 import "./dashboardStyles/sidebar.css";
+import {Link} from "react-router-dom"
 
 const Sidebar = ({ setActiveSection }) => {  // Accept setActiveSection as a prop
   return (
@@ -32,10 +33,13 @@ const Sidebar = ({ setActiveSection }) => {  // Accept setActiveSection as a pro
           <FaCog className="sidebar-icon" />
           <span>Settings</span>
         </li>
+        <Link to='/signup' className="logout-link">
         <li className="sidebar-item">
           <FaSignOutAlt className="sidebar-icon" />
           <span>Logout</span>
         </li>
+        </Link>
+        
       </ul>
     </div>
   );

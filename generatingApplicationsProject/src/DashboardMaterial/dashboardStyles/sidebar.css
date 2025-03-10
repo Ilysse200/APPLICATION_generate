@@ -37,4 +37,8 @@
     font-size: 20px;
     cursor: pointer;
   }
+  .logout-link{
+    color: white;
+    text-decoration: none;
+  }
   
