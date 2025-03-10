@@ -1,137 +1,49 @@
-.view-container{
-    background-color:#F2F2F2;
-    height: 100%;
-}
-.array-container{
-    width: 60%;
-    height: 1vh;
+.view-container {
+    background-color: #F2F2F2;
+    padding: 20px;
+  }
+  
+  .charts-container {
     display: flex;
-    margin: 0;
-    
-}
-
-.array-elements{
-    margin-left: 21.8rem;
-    margin-right: -4.9rem;
-    /* display: flex; */
-    /* flex-direction: row; */
-    width: 52rem;
-    height: 12vh;
-    /* background-color: blueviolet; */
-    padding: 0;
-    /* flex-direction: row; */
-    /* margin-bottom: 30rem; */
-}
-
-
-
-.array-cards{
-    position: absolute;
-    top:6rem;
-    padding-top: 0.6rem;
-    padding-left: 1rem;
-    border: 1px solid gainsboro;
-    border-radius: 0.4rem;
-    width: 13.9rem;
-    height: 12vh;
-    margin-bottom: 3rem;
-    justify-content: space-between;
-    color: black;
-    /* margin-right: 2rem; */
-}
-.color-chooser{
-    background-color: #7b2bee;
-}
-.color-chooser1{
-    background-color: #2cc4b4;
-}
-.color-chooser2{
-    background-color: #536cee;
-}
-.color-chooser3{
-    background-color: #242434;
-}
-.sales-icon{
-    width: 10rem;
-    height: 2.9vh;
-    color: white;
-    margin-left: 18rem;
-    /* padding-right: 3rem; */
-    display: flex;
-    position: absolute;
-    margin-top: 0.1rem;
-    /* margin-right: 5rem; */
-    /* padding-top: 0.5rem; */
-}
-.dashboard-container{
-    width: 24rem;
-    /* width:10rem; */
-    display: flex;
-    padding-top: 10rem;
-    margin-top: 1.4rem;
-    position: absolute;
-    top:-9rem;
-    /* margin-right: -60rem; */
-}
-
-.dashboard-card{
-    /* position: relative; */
-    margin-top: 12rem;
-    height: 43vh;
-    width: 28rem;
-    margin-left: 15rem;
-    border: 1px solid #ccc;
-    padding-top: 3rem;
-    padding-left: 1.2rem;
-    margin-right: -10.8rem;
-      /* color: white; */
-    /* margin-right: 4rem; */
-}
-.dashboard-card h1{
-    font-size: 20px;
-}
-/* .chart-title{
-    padding-top: 2rem;
-    position: absolute;
-    top:40rem;
-    margin-left: 15rem;
-}
-.chart-title:hover{
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    width: 55rem;
+    height: 40vh;
+  }
+  
+  .chart-box {
+    margin-left: 20rem;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .overview-container {
+    margin-left: 58rem;
+    width: 25%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .view-details {
+    float: right;
+    color: gold;
     cursor: pointer;
-}
-.piechart-title{
-    position: absolute;
-    padding-top: 2rem;
-    top:40rem;
-    margin-left: 69rem;
-}
-.graph-identifier{
-    margin-top: 1.6rem;
-    margin-left: 3rem;
-} */
-.values{
-    margin-top: -0.29rem;
-    font-size: 28px;
-    font-weight: 600;
-}
-.returns-icon{
-    width: 2rem;
-    height: 2vh;
-    margin-left: 10rem;
-    margin-top: 0.7rem;
-    position: absolute;
-}
-.purchase-icon{
-    width: 2rem;
-    height: 2vh;
-    margin-left: 10rem;
-    margin-top: 0.7rem;
-    position: absolute;
-}
-.loss-icon{
-    width: 2rem;
-    height: 2vh;
-    margin-left: 10rem;
-    margin-top: 0.7rem;
-    position: absolute;
-}
+  }
+  
+  .overview-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  .overview-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
