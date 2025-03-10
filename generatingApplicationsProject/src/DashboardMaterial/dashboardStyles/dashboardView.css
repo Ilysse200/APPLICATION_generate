@@ -1,5 +1,6 @@
 .view-container{
-    background-color: #D4D4D4;
+    background-color:#F2F2F2;
+    height: 100%;
 }
 .array-container{
     width: 60%;
@@ -10,8 +11,8 @@
 }
 
 .array-elements{
-    margin-left: 15rem;
-    margin-right: 4.3rem;
+    margin-left: 21.8rem;
+    margin-right: -4.9rem;
     /* display: flex; */
     /* flex-direction: row; */
     width: 52rem;
@@ -31,13 +32,12 @@
     padding-left: 1rem;
     border: 1px solid gainsboro;
     border-radius: 0.4rem;
-    width: 18rem;
+    width: 13.9rem;
     height: 12vh;
     margin-bottom: 3rem;
     justify-content: space-between;
     color: black;
-    margin-right: 4rem;
-    /* margin-bottom: 9rem; */
+    /* margin-right: 2rem; */
 }
 .color-chooser{
     background-color: #7b2bee;
@@ -53,9 +53,10 @@
 }
 .sales-icon{
     width: 10rem;
-    height: 2vh;
+    height: 2.9vh;
     color: white;
-    padding-right: 3rem;
+    margin-left: 18rem;
+    /* padding-right: 3rem; */
     display: flex;
     position: absolute;
     margin-top: 0.1rem;
@@ -89,7 +90,7 @@
 .dashboard-card h1{
     font-size: 20px;
 }
-.chart-title{
+/* .chart-title{
     padding-top: 2rem;
     position: absolute;
     top:40rem;
@@ -107,4 +108,30 @@
 .graph-identifier{
     margin-top: 1.6rem;
     margin-left: 3rem;
+} */
+.values{
+    margin-top: -0.29rem;
+    font-size: 28px;
+    font-weight: 600;
+}
+.returns-icon{
+    width: 2rem;
+    height: 2vh;
+    margin-left: 10rem;
+    margin-top: 0.7rem;
+    position: absolute;
+}
+.purchase-icon{
+    width: 2rem;
+    height: 2vh;
+    margin-left: 10rem;
+    margin-top: 0.7rem;
+    position: absolute;
+}
+.loss-icon{
+    width: 2rem;
+    height: 2vh;
+    margin-left: 10rem;
+    margin-top: 0.7rem;
+    position: absolute;
 }

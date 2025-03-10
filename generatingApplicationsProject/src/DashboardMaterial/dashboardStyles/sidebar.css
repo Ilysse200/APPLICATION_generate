@@ -1,4 +1,5 @@
 .sidebar {
+    position: fixed;
     height: 100vh;
     width: 190px;
     background-color: black;
