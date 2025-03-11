@@ -5,7 +5,7 @@ import Settings from './Settings';
 import Applications from './Applications';
 import Users from './Users';
 import './dashboardStyles/dashboardView.css';
-
+import FormCreation from './FormCreation';
 function DashboardView() {
   const [activeSection, setActiveSection] = useState("dashboard"); 
 
@@ -87,6 +87,7 @@ function DashboardView() {
         {activeSection === "settings" && <Settings />}
         {activeSection === "applications" && <Applications />} 
         {activeSection === "users" && <Users />}
+        {activeSection === "forms" && <FormCreation />}
       </div>
     </div>
   );
