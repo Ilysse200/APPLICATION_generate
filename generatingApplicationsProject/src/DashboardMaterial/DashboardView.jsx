@@ -9,6 +9,13 @@ import FormCreation from './FormCreation';
 function DashboardView() {
   const [activeSection, setActiveSection] = useState("dashboard"); 
 
+  const arrayCards = [
+    { title: 'IT department', value: 1200, text: 'Total for this month' },
+    { title: 'Finance department', value: 1200, text: 'Total for this month' },
+    { title: 'Business department', value: 1200, text: 'Total for this month' },
+    { title: 'Sales department', value: 3000, text: 'Total for this month' },
+  ];
+
   // Sample data for charts
   const applicationsData = [
     { month: "Jan", submitted: 20, onHold: 10 },
