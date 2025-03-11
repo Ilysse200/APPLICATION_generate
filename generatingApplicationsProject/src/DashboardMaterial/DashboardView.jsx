@@ -6,6 +6,7 @@ import Applications from './Applications';
 import Users from './Users';
 import './dashboardStyles/dashboardView.css';
 import FormCreation from './FormCreation';
+import Analytics from './Analytics';
 function DashboardView() {
   const [activeSection, setActiveSection] = useState("dashboard"); 
 
@@ -95,6 +96,7 @@ function DashboardView() {
         {activeSection === "applications" && <Applications />} 
         {activeSection === "users" && <Users />}
         {activeSection === "forms" && <FormCreation />}
+        {activeSection === "analytics" && <Analytics />}
       </div>
     </div>
   );
