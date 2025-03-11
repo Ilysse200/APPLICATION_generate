@@ -45,7 +45,7 @@ function DashboardView() {
           <>
             {/* Graphs Section */}
             <div className="charts-container">
-              <div className="chart-box">
+              <div className="charts-box">
                 <h3>Total Applications</h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={applicationsData}>
@@ -60,7 +60,7 @@ function DashboardView() {
                 </ResponsiveContainer>
               </div>
 
-              <div className="chart-box">
+              <div className="charts-box">
                 <h3>Pending Applications</h3>
                 <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={pendingApplicationsData}>
