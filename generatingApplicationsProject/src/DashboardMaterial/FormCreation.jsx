@@ -10,6 +10,7 @@ const FormCreation = () => {
     jobPosition: "",
     referral: "",
     termsAccepted: false,
+    resume:null,
   });
 
   // Departments and job positions mapping
@@ -44,6 +45,19 @@ const FormCreation = () => {
     e.preventDefault();
     if (!formData.termsAccepted) {
       alert("You must accept the terms and conditions!");
+
+      // Create FormData to send files
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("phone", formData.phone);
+    data.append("department", formData.department);
+    data.append("jobPosition", formData.jobPosition);
+    data.append("referral", formData.referral);
+    data.append("resume", formData.resume); // Attach file
+
+    console.log("Form Data Submitted:", formData);
+    alert("Form Created Successfully!");
       return;
     }
     console.log("Form Data:", formData);
@@ -123,6 +137,14 @@ const FormCreation = () => {
           <input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleChange} />
           <label>I agree to the Terms & Conditions</label>
         </div>
+        {/*File Upload */}
+        <label>Upload Resume:</label>
+        <input
+      type="file"
+      name="resume"
+      accept=".pdf,.doc,.docx" // Allow only certain file types
+      onChange={(e) => setFormData({ ...formData, resume: e.target.files[0] })}
+/>
 
         {/* Submit Button */}
         <button type="submit">Create Form</button>
