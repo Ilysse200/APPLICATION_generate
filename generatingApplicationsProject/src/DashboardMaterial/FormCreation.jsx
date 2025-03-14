@@ -1,150 +1,109 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 import "./dashboardStyles/formCreation.css";
 
 const FormCreation = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    department: "",
-    jobPosition: "",
-    referral: "",
-    termsAccepted: false,
-    resume:null,
-  });
+  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
+  const [departments, setDepartments] = useState([]); // Store fetched department options
 
-  // Departments and job positions mapping
-  const departmentOptions = {
-    "IT Department": ["Software Engineer", "Data Scientist", "UX Designer"],
-    "Finance Department": ["Accountant", "Financial Analyst", "Auditor"],
-    "Business Department": ["Business Analyst", "Marketing Manager", "Product Manager"],
-    "Sales Department": ["Sales Representative", "Customer Support Specialist", "Sales Manager"],
-  };
+  // Fetch departments from backend
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+       
+        const response = await axios.get("http://localhost:5009/forms/getdepartment");
+        
+        console.log("API Response:", response.data.data); 
+        
+        setDepartments(response.data.data);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+  
+    fetchDepartments();
+  },[]);
 
-  const referralOptions = [
-    "Social Media",
-    "Friend or Colleague",
-    "Online Advertisement",
-    "Search Engine",
-    "Other",
-  ];
-
-  // Handle form state update
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
-  };
-
-  // Handle department change (reset job position)
-  const handleDepartmentChange = (e) => {
-    setFormData({ department: e.target.value, jobPosition: "" });
-  };
-
-  // Submit function (for now, logs the data)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.termsAccepted) {
+  // Handle form submission
+  const onSubmit = async (data) => {
+    if (!data.termsAccepted) {
       alert("You must accept the terms and conditions!");
-
-      // Create FormData to send files
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("email", formData.email);
-    data.append("phone", formData.phone);
-    data.append("department", formData.department);
-    data.append("jobPosition", formData.jobPosition);
-    data.append("referral", formData.referral);
-    data.append("resume", formData.resume); // Attach file
-
-    console.log("Form Data Submitted:", formData);
-    alert("Form Created Successfully!");
       return;
     }
-    console.log("Form Data:", formData);
-    alert("Form Created Successfully!");
   };
 
   return (
     <div className="form-container">
       <h2>Create Form</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {/* Name Input */}
         <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter full name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+        <input type="text" {...register("name", { required: "Name is required" })} placeholder="Enter full name" />
+        {errors.name && <p className="error">{errors.name.message}</p>}
 
         {/* Email Input */}
         <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email address"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <input type="email" {...register("email", { required: "Email is required" })} placeholder="Enter email address" />
+        {errors.email && <p className="error">{errors.email.message}</p>}
 
         {/* Phone Number Input */}
         <label>Phone Number:</label>
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Enter phone number"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
+        <input type="tel" {...register("phone", { required: "Phone number is required" })} placeholder="Enter phone number" />
+        {errors.phone && <p className="error">{errors.phone.message}</p>}
 
         {/* Department Dropdown */}
         <label>Department:</label>
-        <select name="department" value={formData.department} onChange={handleDepartmentChange} required>
-          <option value="">Select a department</option>
-          {Object.keys(departmentOptions).map((dept) => (
-            <option key={dept} value={dept}>{dept}</option>
-          ))}
+        <select {...register("department", { required: "Please select a department" })}>
+          
+        <option value="">Select a department</option>
+  {Array.isArray(departments) && departments.length > 0 ? (
+    departments.map((item, index) => (
+      <option key={index} value={item}>{item}</option> // ✅ Now correctly maps options
+    ))
+  ) : (
+    <option disabled>Loading departments...</option> // ✅ Handles cases when data is not ready
+  )}
         </select>
+        {errors.department && <p className="error">{errors.department.message}</p>}
 
         {/* Job Position Dropdown */}
-        {formData.department && (
+        {watch("department") && (
           <>
             <label>Job Position:</label>
-            <select name="jobPosition" value={formData.jobPosition} onChange={handleChange} required>
+            <select {...register("jobPosition", { required: "Please select a job position" })}>
               <option value="">Select a job position</option>
-              {departmentOptions[formData.department].map((job) => (
-                <option key={job} value={job}>{job}</option>
+              {jobPositions.map((job) => (
+                <option key={job._id} value={job.name}>{job.name}</option>
               ))}
             </select>
+            {errors.jobPosition && <p className="error">{errors.jobPosition.message}</p>}
           </>
         )}
 
         {/* Referral Dropdown */}
         <label>Where did you hear about us?</label>
-        <select name="referral" value={formData.referral} onChange={handleChange} required>
+        <select {...register("referral", { required: "Please select a referral option" })}>
           <option value="">Select an option</option>
-          {referralOptions.map((option) => (
-            <option key={option} value={option}>{option}</option>
-          ))}
+          <option value="Social Media">Social Media</option>
+          <option value="Friend or Colleague">Friend or Colleague</option>
+          <option value="Online Advertisement">Online Advertisement</option>
+          <option value="Search Engine">Search Engine</option>
+          <option value="Other">Other</option>
         </select>
+        {errors.referral && <p className="error">{errors.referral.message}</p>}
 
         {/* Terms & Conditions Checkbox */}
         <div className="terms-container">
-          <input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleChange} />
+          <input type="checkbox" {...register("termsAccepted", { required: "You must accept the terms and conditions" })} />
           <label>I agree to the Terms & Conditions</label>
         </div>
-        {/*File Upload */}
+        {errors.termsAccepted && <p className="error">{errors.termsAccepted.message}</p>}
+
+        {/* File Upload */}
         <label>Upload Resume:</label>
-        <input
-      type="file"
-      name="resume"
-      accept=".pdf,.doc,.docx" // Allow only certain file types
-      onChange={(e) => setFormData({ ...formData, resume: e.target.files[0] })}
-/>
+        <input type="file" {...register("resume", { required: "Please upload your resume" })} accept=".pdf,.doc,.docx" />
+        {errors.resume && <p className="error">{errors.resume.message}</p>}
 
         {/* Submit Button */}
         <button type="submit">Create Form</button>
