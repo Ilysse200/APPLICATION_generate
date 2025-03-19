@@ -7,7 +7,7 @@
     position: fixed;
     z-index: 1000;
     width:500rem;
-    height: 60px;
+    height: 8vh;
     background-color: #FFFFFF;
     margin-left: -3.1rem;
 }
@@ -27,13 +27,13 @@
     border: 1px solid #ccc;
     background-color: #ECECEC;
     border-radius: 8rem;
-    width: 7.5rem;
-    height: 2.9vh;
+    width: 7.8rem;
+    height: 2.95vh;
     display: flex;
     flex-direction: row-reverse;
     padding-right:1rem;
-    padding-top: 0.4rem;
-    margin-top:0.6rem;
+    padding-top: 0.12rem;
+    margin-top:0.98rem;
     color: #ccc;
     margin-left: 8rem;
     text-align: center;
@@ -42,8 +42,8 @@
 .search-icon{
     color:#B5B7B9;
     position: absolute;
-    margin-top: 0.2rem;
-    margin-right: 5.39rem;
+    margin-top: 0.12rem;
+    margin-right: 5.09rem;
     margin-left: 2.9rem;
     width: 2rem;
     height: 2vh;
@@ -58,7 +58,7 @@
     color: rgb(63, 62, 62);
 } */
 .notification-bar{
-    margin-top: -2.37rem;
+    margin-top: -1.2rem;
     width: 6rem;
     height: 4vh;
     margin-left: 87.89rem;
@@ -78,7 +78,7 @@
 }
 .right-content{
     width: 18rem;
-    height: 0.59vh;
+    height: 2vh;
     display: flex;
 }
 .notification-icon{
