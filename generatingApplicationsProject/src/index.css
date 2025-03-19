@@ -11,15 +11,15 @@
 }
 
 /* Ensure consistent font rendering */
-/* body {
+body {
   font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
+}
 
 /* Ensure full-page layout */
-/* html, body {
+html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-} */
+}
