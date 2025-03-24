@@ -5,6 +5,7 @@ import Layout from "./Layout"
 import Login from "./Login"
 import '../src/index.css'
 import DashboardView from "./DashboardMaterial/DashboardView"
+import WelcomePage from './UserContent/WelcomePage'
 function App() {
   return(
   <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
     <Route path="/" element={<DashboardView/>}/>
     </Route>
     <Route path="/signup" index element={<SignUp/>}/>
+    <Route path="/welcome" index element={<WelcomePage/>}/>
   </Routes>
   </BrowserRouter>
   )
