@@ -1,0 +1,67 @@
+.application-form {
+    padding: 4rem 2rem;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .application-form h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: #222;
+  }
+  
+  .application-form form {
+    background: #ffffff;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .application-form input[type='text'],
+  .application-form input[type='email'] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .file-drop {
+    margin-bottom: 1.5rem;
+    border: 2px dashed #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #777;
+    position: relative;
+  }
+  
+  .file-drop input[type='file'] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+  }
+  
+  .btn-submit {
+    padding: 0.75rem 1.5rem;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background: #333;
+  }
+  

@@ -1,0 +1,78 @@
+/* DepartmentsPage.css */
+
+.departments {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 50px 20px;
+    min-height: 100vh;
+  }
+  
+  .departments h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .department-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    padding: 0 2rem;
+  }
+  
+  .department-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .department-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .department-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .department-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .department-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .department-card p {
+    font-size: 0.95rem;
+    color: #666;
+  }
+  
+  .job-list {
+    margin-top: 15px;
+    text-align: left;
+  }
+  
+  .job-card {
+    background-color: #E7E7E7;
+    padding: 10px 15px;
+    margin: 6px 0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .job-card:hover {
+    background-color: #e0e0e0;
+  }
+  

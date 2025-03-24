@@ -6,6 +6,8 @@ import Login from "./Login"
 import '../src/index.css'
 import DashboardView from "./DashboardMaterial/DashboardView"
 import WelcomePage from './UserContent/WelcomePage'
+import DepartmentsPage from "./UserContent/DepartmentPage"
+import ApplyPage from "./UserContent/Application"
 function App() {
   return(
   <BrowserRouter>
@@ -15,6 +17,8 @@ function App() {
     </Route>
     <Route path="/signup" index element={<SignUp/>}/>
     <Route path="/welcome" index element={<WelcomePage/>}/>
+    <Route path="/department" index element={<DepartmentsPage/>}/>
+    <Route path="/apply" index element={<ApplyPage/>}/>
   </Routes>
   </BrowserRouter>
   )
