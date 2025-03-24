@@ -36,7 +36,7 @@ const DepartmentsPage = () => {
       <h2>Explore Job Opportunities</h2>
       <div className="department-grid">
         {departmentsData.map((dept, index) => (
-          <div className="department-block" key={index}>
+          <div className="department-card" key={index}>
             <h3>{dept.department}</h3>
             <div className="job-list">
               {dept.jobPositions.map((job, jIndex) => (
