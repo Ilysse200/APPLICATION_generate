@@ -24,7 +24,7 @@ const ApplyPage = () => {
         jobPosition: selectedJob?.jobPosition,
       };
 
-      await axios.post('http://localhost:5009/forms/submitApplication', applicationData);
+      await axios.post('http://localhost:5009/forms/createForm', applicationData);
       alert('Application submitted successfully!');
       navigate('/');
     } catch (error) {
