@@ -9,6 +9,9 @@
     margin-bottom: 2rem;
     color: #222;
   }
+  .application-form label{
+    text-align: left;
+  }
   
   .application-form form {
     background: #ffffff;
