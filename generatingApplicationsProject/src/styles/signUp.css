@@ -80,6 +80,33 @@
     padding-bottom: 1.1rem;
     padding-top: 0.3rem;
 }
+/* Error Box Styling */
+.error-box {
+    max-width: 60%;
+    background-color: #ffdddd;
+    color: #d8000c;
+    border: 1px solid #d8000c;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.error-message {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.error-close {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
 .last-line{
     margin-top: -1.4rem;
     display: inline;
