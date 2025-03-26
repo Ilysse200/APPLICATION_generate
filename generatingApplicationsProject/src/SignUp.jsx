@@ -9,6 +9,7 @@ function SignUp() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState(false);
     const navigate = useNavigate();
 
     const handleRegister = () => {
@@ -24,7 +25,15 @@ function SignUp() {
 
             if (response.data.success) {
                 sessionStorage.setItem('user', JSON.stringify(response.data.user));
-                navigate('/welcome');
+                
+                // Show success message
+                setSuccessMessage(true);
+                
+                // Auto-close popup & navigate to welcome after 3s
+                setTimeout(() => {
+                    setSuccessMessage(false);
+                    navigate('/welcome');
+                }, 3000);
             } else {
                 setErrorMessage('Login failed: Invalid credentials.');
             }
@@ -42,6 +51,17 @@ function SignUp() {
                 <div className='error-box'>
                     <span className='error-text'>{errorMessage}</span>
                     <button className='close-btn' onClick={() => setErrorMessage('')}>❌</button>
+                </div>
+            )}
+
+            {/* Success Pop-up Message */}
+            {successMessage && (
+                <div className="success-popup">
+                    <div className="success-content">
+                        ✅ Login Successful
+                        <button className="close-btn" onClick={() => setSuccessMessage(false)}>✖</button>
+                    </div>
+                    <div className="success-timer"></div>
                 </div>
             )}
 
