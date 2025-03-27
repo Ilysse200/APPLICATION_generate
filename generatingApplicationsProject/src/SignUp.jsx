@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Login from './Login';
 import './styles/signUp.css';
+import { IoIosClose } from "react-icons/io";
+import { SiTicktick } from "react-icons/si";
 
 function SignUp() {
     const [register, setRegister] = useState(false);
@@ -50,7 +52,7 @@ function SignUp() {
             {errorMessage && (
                 <div className='error-box'>
                     <span className='error-text'>{errorMessage}</span>
-                    <button className='close-btn' onClick={() => setErrorMessage('')}>❌</button>
+                    <button className='close-btn' onClick={() => setErrorMessage('')}><IoIosClose /></button>
                 </div>
             )}
 
@@ -58,8 +60,8 @@ function SignUp() {
             {successMessage && (
                 <div className="success-popup">
                     <div className="success-content">
-                        ✅ Login Successful
-                        <button className="close-btn" onClick={() => setSuccessMessage(false)}>✖</button>
+                    <SiTicktick />Login Successful
+                        <button className="close-btn" onClick={() => setSuccessMessage(false)}><IoIosClose /></button>
                     </div>
                     <div className="success-timer"></div>
                 </div>
