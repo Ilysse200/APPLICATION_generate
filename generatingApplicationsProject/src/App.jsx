@@ -17,7 +17,7 @@ function App() {
     <Route path="/" element={<DashboardView/>}/>
     </Route>
     {/*User Layout */}
-    <Route path='/' element={<UserLayout/>}>
+    <Route path='' element={<UserLayout/>}>
     <Route path="/welcome" element={<WelcomePage/>}/>
     <Route path="/department" element={<DepartmentsPage/>}/>
     <Route path="/apply" element={<ApplyPage/>}/>
