@@ -1,6 +1,11 @@
 import React from 'react';
 import './userStyles/footer.css';
+import {Link} from 'react-router-dom'
 
+{/*Import footer icons */}
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 const Footer = () => {
     return (
         <footer className="footer">
@@ -11,22 +16,34 @@ const Footer = () => {
             <div className="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Benefits</a></li>
-                    <li><a href="#">Culture</a></li>
+                    <Link to='/welcome' className='footer-links'>
+                    <li>Welcome</li>
+                    </Link>
+
+                    <Link to='/department' className='footer-links'>
+                    <li>Departments</li>
+                    </Link>
+
+                    <Link to='/apply' className='footer-links'>
+                    <li>Applications</li>
+                    </Link>
                 </ul>
             </div>
             <div className="footer-section">
-                <h4>Contact</h4>
-                <p>📧 careers@company.com</p>
-                <p>📞 +1 (555) 123-4567</p>
+                <h4>Sectors</h4>
+                <ul>
+                    <li>Finance sector</li>
+                    <li>IT sector</li>
+                    <li>Business sector</li>
+                    <li>Sales sector</li>
+                </ul>
             </div>
             <div className="footer-section">
                 <h4>Follow Us</h4>
                 <div className="social-icons">
-                    <a href="#"><i className="fab fa-linkedin"></i></a>
-                    <a href="#"><i className="fab fa-twitter"></i></a>
-                    <a href="#"><i className="fab fa-facebook"></i></a>
+                    <li><FaTwitter /></li>
+                    <li><FaLinkedin /></li>
+                    <li><FaFacebook /></li>
                 </div>
             </div>
             <div className="footer-bottom">
