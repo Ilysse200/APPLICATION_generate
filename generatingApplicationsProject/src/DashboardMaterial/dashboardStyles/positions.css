@@ -90,17 +90,15 @@
     margin-bottom: 0.75rem;
   }
   .actions{
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     padding: 0%;
-    top: -13rem;
-    margin-left: 18.79rem;
-    margin-bottom: -7.89rem;
+    margin-left: 40rem;
   }
   
   .actions button {
     position: relative;
-    margin-top: -4.9rem;
+    margin-top: -2.48rem;
     background: none;
     border: none;
     /* display: flex;
@@ -111,7 +109,7 @@
     color: #fccc04;
   }
   
-  .pagination {
+  /* .pagination {
     display: flex;
     justify-content: center;
     gap: 1.2rem;
@@ -130,4 +128,4 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
-  
+   */

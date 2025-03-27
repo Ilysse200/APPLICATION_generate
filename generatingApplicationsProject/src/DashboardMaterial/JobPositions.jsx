@@ -13,9 +13,11 @@ const JobPositionForm = () => {
     employmentType: 'Full-time',
     description: '',
     requirements: '',
+    deadline:'',
   });
 
   const [departments, setDepartments] = useState([]);
+  const [editId, setEditId] = useState(null);
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,7 +44,11 @@ const JobPositionForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5009/jobs/jobCreation', formData);
+    if (editId) {
+      await axios.put(`http://localhost:5009/jobs/updateJobs/${editId}`, formData);
+    } else {
+      await axios.post('http://localhost:5009/jobs/jobCreation', formData);
+    }
     setFormData({
       title: '',
       department: '',
@@ -50,9 +56,24 @@ const JobPositionForm = () => {
       employmentType: 'Full-time',
       description: '',
       requirements: '',
-      deadline:'',
+      deadline: '',
     });
+    setEditId(null);
     fetchJobs();
+  };
+
+  const handleEdit = (job) => {
+    setEditId(job._id);
+    setFormData({
+      title: job.title,
+      department: job.department?._id || job.department,
+      location: job.location,
+      employmentType: job.employmentType,
+      description: job.description,
+      requirements: job.requirements,
+      deadline: job.deadline?.substring(0, 10) || ''
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleDelete = async (id) => {
@@ -158,7 +179,7 @@ const JobPositionForm = () => {
                 <strong>{job.department?.name || 'No department'}</strong> — {job.location} — {job.employmentType}
               </p>
               <div className="actions">
-                <button><FaEdit color='007bff'/></button>
+                <button onClick={() => handleEdit(job)}><FaEdit color='#007bff'/></button>
                 <button onClick={() => handleDelete(job._id)}><MdDelete color='red'/></button>
               </div>
             </li>
