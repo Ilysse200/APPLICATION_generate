@@ -4,6 +4,7 @@ import './styles/login.css';
 
 {/*Import icons for registration */}
 import { IoIosClose } from "react-icons/io";
+import { SiTicktick } from "react-icons/si";
 
 function Login({ handleRegister }) {
   const [username, setUsername] = useState('');
@@ -37,8 +38,8 @@ function Login({ handleRegister }) {
       {successMessage && (
                 <div className="success-popup">
                     <div className="success-content">
-                        ✅ User registered Successfully
-                        <button className="close-btn" onClick={() => setSuccessMessage(false)}><IoIosClose className='close-btn-success'/></button>
+                    <SiTicktick /> <p className='success-info'>User registered Successfully</p>
+                        <button className="close-btn" onClick={() => setSuccessMessage(false)}><IoIosClose/></button>
                     </div>
                     <div className="success-timer"></div>
                 </div>
