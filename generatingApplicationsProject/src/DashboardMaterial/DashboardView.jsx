@@ -7,6 +7,7 @@ import Users from './Users';
 import './dashboardStyles/dashboardView.css';
 import FormCreation from './FormCreation';
 import Analytics from './Analytics';
+import DepartmentsView from './Department';
 function DashboardView() {
   const [activeSection, setActiveSection] = useState("dashboard"); 
 
@@ -97,6 +98,7 @@ function DashboardView() {
         {activeSection === "users" && <Users />}
         {activeSection === "forms" && <FormCreation />}
         {activeSection === "analytics" && <Analytics />}
+        {activeSection === "departments" && <DepartmentsView />}
       </div>
     </div>
   );
