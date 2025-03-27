@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './userStyles.css/department.css';
+import './userStyles/department.css';
 
 const DepartmentsPage = () => {
   const [departmentsData, setDepartmentsData] = useState([]);

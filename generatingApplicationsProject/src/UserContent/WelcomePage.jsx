@@ -1,5 +1,5 @@
 import React from 'react';
-import './userStyles.css/welcome.css';
+import './userStyles/welcome.css';
 import { Link } from 'react-router-dom';
 const WelcomePage = () => {
   return (

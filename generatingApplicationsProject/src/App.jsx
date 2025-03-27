@@ -8,6 +8,7 @@ import DashboardView from "./DashboardMaterial/DashboardView"
 import WelcomePage from './UserContent/WelcomePage'
 import DepartmentsPage from "./UserContent/DepartmentPage"
 import ApplyPage from "./UserContent/Application"
+import UserLayout from "./UserContent/userLayout"
 function App() {
   return(
   <BrowserRouter>
@@ -15,10 +16,13 @@ function App() {
     <Route path ="" element={<Layout/>}>
     <Route path="/" element={<DashboardView/>}/>
     </Route>
+    {/*User Layout */}
+    <Route path='/' element={<UserLayout/>}>
+    <Route path="/welcome" element={<WelcomePage/>}/>
+    <Route path="/department" element={<DepartmentsPage/>}/>
+    <Route path="/apply" element={<ApplyPage/>}/>
+    </Route>
     <Route path="/signup" index element={<SignUp/>}/>
-    <Route path="/welcome" index element={<WelcomePage/>}/>
-    <Route path="/department" index element={<DepartmentsPage/>}/>
-    <Route path="/apply" index element={<ApplyPage/>}/>
   </Routes>
   </BrowserRouter>
   )

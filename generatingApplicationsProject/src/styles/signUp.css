@@ -82,18 +82,21 @@
 }
 /* Error Box Styling */
 .error-box {
-    max-width: 60%;
-    background-color: #ffdddd;
-    color: #d8000c;
-    border: 1px solid #d8000c;
-    padding: 1rem;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #F2F2F2;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px;
     border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    max-width:250px;
+    z-index: 1000;
     font-weight: bold;
-    margin-bottom: 1rem;
-    position: relative;
 }
 
 .error-message {
