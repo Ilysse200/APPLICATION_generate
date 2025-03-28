@@ -36,7 +36,14 @@ function SignUp() {
                 // Auto-close popup & navigate to welcome after 3s
                 setTimeout(() => {
                     setSuccessMessage(false);
-                    navigate('/welcome');
+                
+                    const user = response.data.user;
+                    console.log("Logged in user:", response.data.user);
+                    if (user.userName === 'Wanda456' && user.userRole === 'Admin') {
+                        navigate('/');
+                    } else {
+                        navigate('/welcome');
+                    }
                 }, 3000);
             } else {
                 setErrorMessage('Login failed: Invalid credentials.');
