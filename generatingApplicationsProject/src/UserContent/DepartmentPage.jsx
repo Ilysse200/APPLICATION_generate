@@ -43,7 +43,8 @@ const DepartmentsPage = () => {
       'selectedJob',
       JSON.stringify({
         department,
-        jobId: jobPosition._id, // ✅ must be the correct MongoDB _id
+        jobId: jobPosition._id,
+        jobTitle: jobPosition.title // ✅ must be the correct MongoDB _id
       })
     );
     navigate('/apply');

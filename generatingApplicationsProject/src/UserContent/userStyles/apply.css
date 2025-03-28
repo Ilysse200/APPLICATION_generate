@@ -1,119 +1,74 @@
-.application-form {
-    padding: 4rem 2rem;
-    background: #f9f9f9;
-    text-align: center;
-  }
-  
-  .application-form h2 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-    color: #222;
-  }
-  .application-form label{
-    text-align: left;
-  }
-  
-  .application-form form {
-    background: #ffffff;
-    padding: 2rem;
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .application-form input[type='text'],
-  .application-form input[type='email'] {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .file-drop {
-    margin-bottom: 1.5rem;
-    border: 2px dashed #ccc;
-    padding: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    color: #777;
-    position: relative;
-  }
-  
-  .file-drop input[type='file'] {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-  }
-  
-  .btn-submit {
-    padding: 0.75rem 1.5rem;
-    background: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .btn-submit:hover {
-    background: #333;
-  }
-/*Added responsiveness below*/
 
-  @media screen and (max-width: 768px) {
-    .application-form {
-      padding: 2rem 1rem;
-    }
-  
-    .application-form h2 {
-      font-size: 1.5rem;
-    }
-  
-    .application-form form {
-      padding: 1.5rem;
-      max-width: 90%;
-    }
-  
-    .application-form input[type='text'],
-    .application-form input[type='email'] {
-      font-size: 0.95rem;
-      padding: 0.65rem;
-    }
-  
-    .file-drop {
-      font-size: 0.9rem;
-      padding: 0.75rem;
-    }
-  
-    .btn-submit {
-      width: 100%;
-      font-size: 1rem;
-      padding: 0.75rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .application-form h2 {
-      font-size: 1.3rem;
-    }
-  
-    .application-form form {
-      padding: 1rem;
-    }
-  
-    .btn-submit {
-      font-size: 0.95rem;
-      padding: 0.7rem;
-    }
-  }
-  
-  
+.apply-section {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.apply-section h2 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+.job-info-banner {
+  background-color: #fff8d3;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #f1c40f;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.job-info-banner p {
+  margin: 0.4rem 0;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline-color: #f1c40f;
+}
+
+.form-group input[type="file"] {
+  padding: 0.5rem;
+}
+
+.apply-form button {
+  background-color: #f1c40f;
+  color: #000;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.apply-form button:hover {
+  background-color: #e0b90a;
+}
+

@@ -56,6 +56,14 @@ const ApplyPage = () => {
   return (
     <section className="apply-section">
       <h2>Apply for Job</h2>
+  
+      {selectedJob && (
+        <div className="job-info-banner">
+          <p><strong>Department:</strong> {selectedJob.department}</p>
+          <p><strong>Job Title:</strong> {selectedJob.jobTitle || 'Unknown'}</p>
+        </div>
+      )}
+  
       <form className="apply-form" onSubmit={handleSubmit}>
         {formFields.map((field, index) => (
           <div key={index} className="form-group">
@@ -88,6 +96,6 @@ const ApplyPage = () => {
       </form>
     </section>
   );
-};
-
+}
+  
 export default ApplyPage;
