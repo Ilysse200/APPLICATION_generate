@@ -4,30 +4,42 @@ import axios from 'axios';
 import './userStyles/department.css';
 
 const DepartmentsPage = () => {
-  const [departmentsData, setDepartmentsData] = useState([]);
+  const [groupedDepartments, setGroupedDepartments] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchDepartments = async () => {
+    const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://localhost:5009/forms/departmentJobs');
-        if (response.data.success) {
-          setDepartmentsData(response.data.data);
-        }
+        const response = await axios.get('http://localhost:5009/jobs/displayJobs');
+        const jobs = response.data;
+
+        // Group by department name
+        const grouped = jobs.reduce((acc, job) => {
+          const deptName = job.department?.name || 'Unknown Department';
+          if (!acc[deptName]) {
+            acc[deptName] = [];
+          }
+          acc[deptName].push({ title: job.title, id: job._id });
+          return acc;
+        }, {});
+
+        // Convert to array for rendering
+        const departmentList = Object.entries(grouped).map(([department, jobPositions]) => ({
+          department,
+          jobPositions,
+        }));
+
+        setGroupedDepartments(departmentList);
       } catch (error) {
-        console.error('Error fetching departments:', error);
+        console.error('Error fetching job positions:', error);
       }
     };
 
-    fetchDepartments();
+    fetchJobs();
   }, []);
 
-  const handleJobClick = (department, jobPosition) => {
-    // Store job selection in sessionStorage
-    sessionStorage.setItem(
-      'selectedJob',
-      JSON.stringify({ department, jobPosition })
-    );
+  const handleJobClick = (department, job) => {
+    sessionStorage.setItem('selectedJob', JSON.stringify({ department, jobId: job.id }));
     navigate('/apply');
   };
 
@@ -35,7 +47,7 @@ const DepartmentsPage = () => {
     <section className="departments" id="departments">
       <h2>Explore Job Opportunities</h2>
       <div className="department-grid">
-        {departmentsData.map((dept, index) => (
+        {groupedDepartments.map((dept, index) => (
           <div className="department-card" key={index}>
             <h3>{dept.department}</h3>
             <div className="job-list">
@@ -45,7 +57,7 @@ const DepartmentsPage = () => {
                   className="job-card"
                   onClick={() => handleJobClick(dept.department, job)}
                 >
-                  {job} ➤
+                  {job.title} ➤
                 </div>
               ))}
             </div>
