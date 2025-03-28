@@ -40,7 +40,10 @@ function SignUp() {
                 setErrorMessage('Login failed: Invalid credentials.');
             }
         } catch (error) {
-            setErrorMessage('Login failed: Please check your details.');
+            setErrorMessage(true);
+            setTimeout(() => {
+                setErrorMessage(false);
+            }, 3000);
         }
     };
 
@@ -50,9 +53,12 @@ function SignUp() {
 
             {/* Error Box */}
             {errorMessage && (
-                <div className='error-box'>
-                    <span className='error-text'>{errorMessage}</span>
-                    <button className='close-btn' onClick={() => setErrorMessage('')}><IoIosClose /></button>
+                <div className='success-popup'>
+                    <div className='success-content'>
+                        <IoIosClose/>Login Failed
+                    <button className='close-btn' onClick={() => setErrorMessage('false')}><IoIosClose /></button>
+                    </div>
+                    <div className="success-timer"></div>
                 </div>
             )}
 

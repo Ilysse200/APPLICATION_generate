@@ -29,6 +29,10 @@ const Sidebar = ({ setActiveSection }) => {  // Accept setActiveSection as a pro
           <IoIosApps className="sidebar-icon" />
           <span>Jobs</span>
         </li>
+        <li className="sidebar-item" onClick={() => setActiveSection("formBuilder")}>
+          <IoIosApps className="sidebar-icon" />
+          <span>Form Builder</span>
+        </li>
         <li className="sidebar-item" onClick={() => setActiveSection("analytics")}>
           <MdAnalytics className="sidebar-icon" />
           <span>Analytics</span>

@@ -110,6 +110,13 @@
     font-weight: bold;
     margin-left: 1rem;
 }
+.error-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .last-line{
     margin-top: -1.4rem;
     display: inline;
