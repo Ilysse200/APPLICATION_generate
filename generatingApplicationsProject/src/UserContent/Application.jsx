@@ -43,9 +43,12 @@ const ApplyPage = () => {
       data.append(key, value);
     }
     data.append('jobId', selectedJob?.jobId);
+data.append('department', selectedJob?.department);
+data.append('jobTitle', selectedJob?.jobTitle); // ✅ This fixes "jobTitle is required"
+
 
     try {
-      await axios.post('http://localhost:5009/forms/submit', data);
+      await axios.post('http://localhost:5009/submissions/formCreate', data);
       alert('Application submitted!');
     } catch (err) {
       console.error('Submission failed:', err);
