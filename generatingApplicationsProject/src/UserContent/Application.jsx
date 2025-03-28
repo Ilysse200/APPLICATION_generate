@@ -1,81 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './userStyles/apply.css';
 
 const ApplyPage = () => {
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const [formFields, setFormFields] = useState([]);
+  const [formValues, setFormValues] = useState({});
   const [selectedJob, setSelectedJob] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const storedJob = sessionStorage.getItem('selectedJob');
-    if (storedJob) {
-      setSelectedJob(JSON.parse(storedJob));
+    const stored = sessionStorage.getItem('selectedJob');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      console.log(JSON.parse(stored));
+      setSelectedJob(parsed);
+      fetchForm(parsed.jobId);
     }
   }, []);
 
-  const onSubmit = async (data) => {
+  const fetchForm = async (jobId) => {
     try {
-      const applicationData = {
-        ...data,
-        department: selectedJob?.department,
-        jobPosition: selectedJob?.jobPosition,
-      };
-
-      await axios.post('http://localhost:5009/forms/createForm', applicationData);
-      alert('Application submitted successfully!');
-      navigate('/');
+      const response = await axios.get(`http://localhost:5009/formBuild/formBlueprints/${jobId}`);
+      if (response.data?.fields) {
+        setFormFields(response.data.fields);
+      }
     } catch (error) {
-      console.error('Error submitting application:', error);
+      console.error('Error loading form:', error);
+    }
+  };
+
+  const handleChange = (e, fieldName) => {
+    const { type, checked, value, files } = e.target;
+    setFormValues({
+      ...formValues,
+      [fieldName]: type === 'checkbox' ? checked : files ? files[0] : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    for (const [key, value] of Object.entries(formValues)) {
+      data.append(key, value);
+    }
+    data.append('jobId', selectedJob?.jobId);
+
+    try {
+      await axios.post('http://localhost:5009/forms/submit', data);
+      alert('Application submitted!');
+    } catch (err) {
+      console.error('Submission failed:', err);
+      alert('Submission failed');
     }
   };
 
   return (
-    <section className="application-form" id="apply">
-      <h2>Application Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Full Name:</label>
-        <input type="text" {...register("name", { required: "Name is required" })} placeholder="Enter full name" />
-        {errors.name && <p className="error">{errors.name.message}</p>}
-
-        <label>Email:</label>
-        <input type="email" {...register("email", { required: "Email is required" })} placeholder="Enter email address" />
-        {errors.email && <p className="error">{errors.email.message}</p>}
-
-        <label>Phone Number:</label>
-        <input type="tel" {...register("phone", { required: "Phone number is required" })} placeholder="Enter phone number" />
-        {errors.phone && <p className="error">{errors.phone.message}</p>}
-
-        <label>Department:</label>
-        <input type="text" value={selectedJob?.department || ""} disabled />
-
-        <label>Job Position:</label>
-        <input type="text" value={selectedJob?.jobPosition || ""} disabled />
-
-        <label>Where did you hear about us?</label>
-        <select {...register("referral", { required: "Please select a referral option" })}>
-          <option value="">Select an option</option>
-          <option value="Social Media">Social Media</option>
-          <option value="Friend or Colleague">Friend or Colleague</option>
-          <option value="Online Advertisement">Online Advertisement</option>
-          <option value="Search Engine">Search Engine</option>
-          <option value="Other">Other</option>
-        </select>
-        {errors.referral && <p className="error">{errors.referral.message}</p>}
-
-        <div className="terms-container">
-          <input type="checkbox" {...register("termsAccepted", { required: "You must accept the terms and conditions" })} />
-          <label>I agree to the Terms & Conditions</label>
-        </div>
-        {errors.termsAccepted && <p className="error">{errors.termsAccepted.message}</p>}
-
-        <label>Upload Resume:</label>
-        <input type="file" {...register("resume", { required: "Please upload your resume" })} accept=".pdf,.doc,.docx" />
-        {errors.resume && <p className="error">{errors.resume.message}</p>}
-
-        <button type="submit" className="btn-submit">Submit Application</button>
+    <section className="apply-section">
+      <h2>Apply for Job</h2>
+      <form className="apply-form" onSubmit={handleSubmit}>
+        {formFields.map((field, index) => (
+          <div key={index} className="form-group">
+            <label>{field.label}{field.required && '*'}</label>
+            {field.type === 'text' && (
+              <input
+                type="text"
+                placeholder={field.placeholder}
+                required={field.required}
+                onChange={(e) => handleChange(e, field.label)}
+              />
+            )}
+            {field.type === 'textarea' && (
+              <textarea
+                placeholder={field.placeholder}
+                required={field.required}
+                onChange={(e) => handleChange(e, field.label)}
+              ></textarea>
+            )}
+            {field.type === 'file' && (
+              <input
+                type="file"
+                required={field.required}
+                onChange={(e) => handleChange(e, field.label)}
+              />
+            )}
+          </div>
+        ))}
+        <button type="submit">Submit</button>
       </form>
     </section>
   );

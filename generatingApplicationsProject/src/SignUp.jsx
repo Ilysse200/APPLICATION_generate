@@ -5,6 +5,8 @@ import Login from './Login';
 import './styles/signUp.css';
 import { IoIosClose } from "react-icons/io";
 import { SiTicktick } from "react-icons/si";
+import { IoWarning } from "react-icons/io5";
+
 
 function SignUp() {
     const [register, setRegister] = useState(false);
@@ -55,8 +57,8 @@ function SignUp() {
             {errorMessage && (
                 <div className='success-popup'>
                     <div className='success-content'>
-                        <IoIosClose/>Login Failed
-                    <button className='close-btn' onClick={() => setErrorMessage('false')}><IoIosClose /></button>
+                        <IoWarning color='#D9AB0B'/>Login Failed
+                    <button className='close-btn' onClick={() => setErrorMessage(false)}><IoIosClose /></button>
                     </div>
                     <div className="success-timer"></div>
                 </div>

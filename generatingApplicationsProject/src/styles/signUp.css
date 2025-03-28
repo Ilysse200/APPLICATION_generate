@@ -81,7 +81,7 @@
     padding-top: 0.3rem;
 }
 /* Error Box Styling */
-.error-box {
+/* .error-box {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -97,9 +97,9 @@
     max-width:250px;
     z-index: 1000;
     font-weight: bold;
-}
+} */
 
-.error-message {
+/* .error-message {
     flex-grow: 1;
     text-align: center;
 }
@@ -115,7 +115,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
+} */
 
 .last-line{
     margin-top: -1.4rem;
@@ -151,8 +151,8 @@
     top: 20px;
     right: 20px;
     background-color: #F2F2F2;
-    color: #D9AB0B;
-    border: 1px solid #c3e6cb;
+    color: #211A02;
+    border: 1px solid #F4E19E;
     padding: 12px;
     border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -178,7 +178,7 @@
     border: none;
     font-size: 1.4rem;
     cursor: pointer;
-    color: #D9AB0B;
+    color: #000;
     max-width: 0.3rem;
     max-height: 0.98rem;
     margin-top: -1.2rem;

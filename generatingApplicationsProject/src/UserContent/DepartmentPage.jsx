@@ -19,7 +19,7 @@ const DepartmentsPage = () => {
           if (!acc[deptName]) {
             acc[deptName] = [];
           }
-          acc[deptName].push({ title: job.title, id: job._id });
+          acc[deptName].push({ title: job.title, _id: job._id });
           return acc;
         }, {});
 
@@ -38,8 +38,14 @@ const DepartmentsPage = () => {
     fetchJobs();
   }, []);
 
-  const handleJobClick = (department, job) => {
-    sessionStorage.setItem('selectedJob', JSON.stringify({ department, jobId: job.id }));
+  const handleJobClick = (department, jobPosition) => {
+    sessionStorage.setItem(
+      'selectedJob',
+      JSON.stringify({
+        department,
+        jobId: jobPosition._id, // ✅ must be the correct MongoDB _id
+      })
+    );
     navigate('/apply');
   };
 
