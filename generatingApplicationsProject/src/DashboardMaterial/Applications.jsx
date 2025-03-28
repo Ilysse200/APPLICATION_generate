@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./dashboardStyles/applications.css";
 
 const Applications = () => {
+  const [submissions, setSubmissions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const applicationsData = [
-    { job: "Software Engineer", applications: 20, pending: 25 },
-    { job: "Product Manager", applications: 18, pending: 23 },
-    { job: "Data Scientist", applications: 15, pending: 20 },
-    { job: "Marketing Manager", applications: 12, pending: 15 },
-    { job: "Sales Representative", applications: 10, pending: 12 },
-    { job: "UX Designer", applications: 8, pending: 10 },
-    { job: "Customer Support Specialist", applications: 5, pending: 7 },
-    { job: "Business Analyst", applications: 3, pending: 5 },
-    { job: "HR Coordinator", applications: 2, pending: 3 },
-    { job: "Accountant", applications: 1, pending: 2 },
-  ];
+  useEffect(() => {
+    const fetchSubmissions = async () => {
+      try {
+        const res = await axios.get("http://localhost:5009/submissions/formFetch");
+        setSubmissions(res.data);
+      } catch (err) {
+        console.error("Error fetching applications:", err);
+      }
+    };
+
+    fetchSubmissions();
+  }, []);
+
+  const filteredSubmissions = submissions.filter((submission) =>
+    submission.jobTitle?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="applications-container">
@@ -33,23 +39,28 @@ const Applications = () => {
       <table className="applications-table">
         <thead>
           <tr>
+            <th>Name</th>
+            <th>Email</th>
             <th>Job Position</th>
-            <th>Applications</th>
-            <th>Pending Applications</th>
           </tr>
         </thead>
         <tbody>
-          {applicationsData
-            .filter((item) =>
-              item.job.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-            .map((item, index) => (
+          {filteredSubmissions.map((submission, index) => {
+            const nameField = submission.fields.find(
+              (f) => f.label.toLowerCase().includes("name")
+            );
+            const emailField = submission.fields.find(
+              (f) => f.label.toLowerCase().includes("email")
+            );
+
+            return (
               <tr key={index}>
-                <td>{item.job}</td>
-                <td>{item.applications}</td>
-                <td>{item.pending}</td>
+                <td>{nameField?.value || "N/A"}</td>
+                <td>{emailField?.value || "N/A"}</td>
+                <td>{submission.jobTitle || "N/A"}</td>
               </tr>
-            ))}
+            );
+          })}
         </tbody>
       </table>
 
