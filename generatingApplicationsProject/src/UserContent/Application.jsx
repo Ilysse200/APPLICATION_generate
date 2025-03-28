@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './userStyles/apply.css';
+import { useNavigate } from 'react-router-dom';
 
 const ApplyPage = () => {
   const [formFields, setFormFields] = useState([]);
   const [formValues, setFormValues] = useState({});
   const [selectedJob, setSelectedJob] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const stored = sessionStorage.getItem('selectedJob');
@@ -50,6 +52,7 @@ data.append('jobTitle', selectedJob?.jobTitle); // ✅ This fixes "jobTitle is r
     try {
       await axios.post('http://localhost:5009/submissions/formCreate', data);
       alert('Application submitted!');
+      navigate('/welcome');
     } catch (err) {
       console.error('Submission failed:', err);
       alert('Submission failed');
