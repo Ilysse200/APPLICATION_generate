@@ -71,7 +71,7 @@ export default function DepartmentsView() {
     <div className="departments-page">
       <div className="header-row">
         <h2>Vacancies Management</h2>
-        <button className="add-btn" onClick={() => setShowForm(!showForm)}>+ Add vacancy categories</button>
+        <button className="add-btn" onClick={() => setShowForm(!showForm)}>+ Add Vacancies</button>
       </div>
 
       <input
