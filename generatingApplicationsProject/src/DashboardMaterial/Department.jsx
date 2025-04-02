@@ -70,8 +70,8 @@ export default function DepartmentsView() {
   return (
     <div className="departments-page">
       <div className="header-row">
-        <h2>Department Management</h2>
-        <button className="add-btn" onClick={() => setShowForm(!showForm)}>+ Add Department</button>
+        <h2>Vacancies Management</h2>
+        <button className="add-btn" onClick={() => setShowForm(!showForm)}>+ Add vacancy categories</button>
       </div>
 
       <input
@@ -84,9 +84,9 @@ export default function DepartmentsView() {
 
       {showForm && (
         <form className="department-form" onSubmit={handleSubmit}>
-          <input name="name" placeholder="Department Name" value={formData.name} onChange={handleInputChange} required />
-          <input name="head" placeholder="Head of Department" value={formData.head} onChange={handleInputChange} required />
-          <input name="employees" placeholder="Number of Employees" type="number" value={formData.employees} onChange={handleInputChange} required />
+          <input name="name" placeholder="Vacancy Name" value={formData.name} onChange={handleInputChange} required />
+          <input name="head" placeholder="Vacancy Type" value={formData.head} onChange={handleInputChange} required />
+          <input name="employees" placeholder="Purpose" type="number" value={formData.employees} onChange={handleInputChange} required />
           <button type="submit">{editId ? 'Update' : 'Create'}</button>
         </form>
       )}
@@ -96,8 +96,8 @@ export default function DepartmentsView() {
           <thead>
             <tr>
               <th>Department Name</th>
-              <th>Head of Department</th>
-              <th>Employees</th>
+              <th>Vacancy Type</th>
+              <th>Purpose</th>
               <th>Actions</th>
             </tr>
           </thead>
