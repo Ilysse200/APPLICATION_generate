@@ -9,7 +9,6 @@ import WelcomePage from './UserContent/WelcomePage'
 import DepartmentsPage from "./UserContent/DepartmentPage"
 import ApplyPage from "./UserContent/Application"
 import UserLayout from "./UserContent/userLayout"
-import JobPortal from "./UserContent/JobPortal"
 function App() {
   return(
   <BrowserRouter>
@@ -22,7 +21,6 @@ function App() {
     <Route path="/welcome" element={<WelcomePage/>}/>
     <Route path="/department" element={<DepartmentsPage/>}/>
     <Route path="/apply" element={<ApplyPage/>}/>
-    <Route path="/jobs" element={<JobPortal/>}/>
     </Route>
     <Route path="/" index element={<SignUp/>}/>
     <Route path="/signup"  element={<SignUp/>}/>
