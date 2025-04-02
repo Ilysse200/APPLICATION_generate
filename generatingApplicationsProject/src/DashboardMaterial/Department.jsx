@@ -86,7 +86,7 @@ export default function DepartmentsView() {
         <form className="department-form" onSubmit={handleSubmit}>
           <input name="name" placeholder="Vacancy Name" value={formData.name} onChange={handleInputChange} required />
           <input name="head" placeholder="Vacancy Type" value={formData.head} onChange={handleInputChange} required />
-          <input name="employees" placeholder="Purpose" type="number" value={formData.employees} onChange={handleInputChange} required />
+          <input name="employees" placeholder="Purpose" type={formData.purpose} value={formData.employees} onChange={handleInputChange} required />
           <button type="submit">{editId ? 'Update' : 'Create'}</button>
         </form>
       )}
