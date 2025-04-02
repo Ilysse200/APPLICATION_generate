@@ -22,7 +22,7 @@ function App() {
     <Route path="/department" element={<DepartmentsPage/>}/>
     <Route path="/apply" element={<ApplyPage/>}/>
     </Route>
-    <Route path="/" index element={<SignUp/>}/>
+    <Route path="" index element={<SignUp/>}/>
     <Route path="/signup"  element={<SignUp/>}/>
   </Routes>
   </BrowserRouter>
