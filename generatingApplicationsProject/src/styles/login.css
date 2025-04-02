@@ -34,7 +34,7 @@
     backdrop-filter: blur(0.6px); /* Blurs background for a soft glass effect */
     border: 1px solid rgba(255, 255, 255, 0.2); /* Soft white border */
     width: 26rem;
-    height: 59.98vh;
+    height: 60vh;
     margin-left: -2rem;
     border-radius: 8px; /* Slightly rounded edges */
     padding: 20px; /* Adds spacing inside */
@@ -70,7 +70,7 @@
     font-size: 12px;
     border-style: none;
     width: 284px;
-    height: 4.5vh;
+    height: 7vh;
     border-radius: 5px;
     margin-bottom: 0.3rem;
 }
@@ -78,8 +78,8 @@
     margin-left: 4.3rem;
     font-size: 1rem;
     width:295px;
-    height:4.7vh;
-    border-radius: 6px;
+    height:5vh;
+    border-radius: 3px;
     border-style: none;
     background: #fccc04;
     color:white;

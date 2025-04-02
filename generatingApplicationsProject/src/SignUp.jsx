@@ -40,7 +40,7 @@ function SignUp() {
                     const user = response.data.user;
                     console.log("Logged in user:", response.data.user);
                     if (user.userName === 'Wanda456' && user.userRole === 'Admin') {
-                        navigate('/');
+                        navigate('/dashboard');
                     } else {
                         navigate('/welcome');
                     }
